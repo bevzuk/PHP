@@ -11,8 +11,17 @@ require_once '../Source/example.php';
 
 class exampleTest extends PHPUnit_Framework_TestCase
 {
-    function testFunctionCanAddTwoNumbers() {
-        $sum = add(1, 2);
-        $this->assertEquals(3, $sum);
+    private $calculator;
+
+    protected function setUp() {
+        $this->calculator = new Calculator();
+    }
+
+    function testItCanAddTwoNumbers() {
+        $this->assertEquals(5, $this->calculator->add(2, 3));
+    }
+
+    function testCanMultiplyTwoNumbers() {
+        $this->assertEquals(6, $this->calculator->multiply(2, 3));
     }
 }
